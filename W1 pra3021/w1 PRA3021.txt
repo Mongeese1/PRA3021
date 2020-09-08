@@ -1,0 +1,33 @@
+Report PRA3021 W1
+
+
+DIY1: Input code for equation into matlab, used similar code as example to show points that have been sampled, code outputs a plot with x marks where the data has been sampled, 
+demonstrates how sampling frequency affects the sampled signal.
+
+DIY2: Input code to create discrete fourier transform, which will take as an input an array and sampling frequency and do a fourier transform on it, 
+as well as generate a plot of the transformed signal, with its frequency being on the x axis, letting us see which frequencies make up the signal. 
+Could not figure out how to code it to accept the input of the given functions under DIY- Discrete fourier transform (3)
+
+UPDATE: Figured out DIY - Discrete fourier transform 3, was incorrectly passing input into function.
+
+DIY3: Used matlabs inbuilt fast fourier transform to transform sample data and plot it, which shows 6 distinct peaks at certain frequency values which make up the signal.
+
+DIY4: Input code to create a cooley-tuckey fft, which recursively calls itself in order to sort between two arrays of xeven and xodd, 
+this could also be done through a for loop. Added in some code to check whether N is a power of 2, and the case where N = 1, 
+in order to make the algorithm work for data with length ~= 2^n zeroes could possibly be added to the back of the array to make it a length of 2^n by taking the difference in the length of the array and the closest power of 2
+
+for z = 1:2^n;
+if z > len(x)
+diff = z-len(x)
+
+and add zeros to array = to diff. Not entirely sure if this would work mathematically, but is an option.
+
+DIY5: Input beethoven signal, which I compressed to 1% of the original, as I was using octave and any fft method would require multiplication of matrices larger than 32-bit integer, 
+however I could still not get my DFT function to work on it, as octave kept throwing up memory errors, fft worked though, 
+and I was able to produce a fourier transformed version of the signal, I did not have time to input the code for the filtering but it would be
+
+for I = len(signal)
+if I > 4000 
+signal = 0
+
+I tried something like this, but it seemed to recur infinitley, so I could not do any proper filtering.
