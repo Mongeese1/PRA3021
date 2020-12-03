@@ -1,0 +1,14 @@
+clear;clc;
+
+path = 'car.xls';
+% % Read the data into a cell array
+% [~,~,data] = xlsread(path);
+% % Converting cell array to a table
+% data = cell2table(data);
+% % Getting all the data except from the first row
+% data = data(2:end,:);
+
+% Naive_Baysein(data);
+
+data = readtable(path,'Delimiter',',');
+A = table2array(data(:,1:7));

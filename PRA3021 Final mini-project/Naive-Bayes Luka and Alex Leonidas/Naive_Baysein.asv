@@ -1,0 +1,40 @@
+function pv = Naive_Baysein(D,L)
+%NAIVE_BAYSEIN Summary of this function goes here
+%   Detailed explanation goes here
+
+    % Get the sizd of the data
+    [n,m] = size(D);
+
+    % Split the data into train and test data using 80 - 20 split
+    z = ceil(n*0.8);
+    train = D(1:z,:);
+    L_train = L(1:z,:);  
+    test = D(z+1:n,:);
+    L_test = L(z+1:n,:);
+    
+    class = unique(L_train);
+    num_class = length(class);
+    ns = max(size(L_test));
+    Classes = D(:,m);
+    
+    % Calculating the class probablilities
+    for i = 1:num_class
+        class_prob(i) = sum(double(L_train==class(i)))/length(L_train);
+        xi = train(L_train==class(i),:);
+        mu(i,:) = mean(xi,1);
+        sigma(i,:) = std(xi,1);
+    end
+    
+    for i = 1:length(test)
+        t = normcdf(ones(num_class,1)*test(i,:),mu,sigma);
+        P(i,:) = class_prob.*prod(t,2)';
+    end
+    
+    [~,id] = max(P,[],2);
+    for i = 1:length(id)
+        pv(i,1) = class(id(i));
+    end
+
+       
+end
+
